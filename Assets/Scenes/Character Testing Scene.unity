@@ -370,7 +370,7 @@ Animator:
   m_GameObject: {fileID: 1192269842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea1e3db27a59e574d94b4f1c1d02d5ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 1814135409}
   - component: {fileID: 1814135408}
   - component: {fileID: 1814135407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

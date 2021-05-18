@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jumpForce = 15f;
-        Speed = 5f;
+        jumpForce = 3f;
+        Speed = 3f;
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetBool("isRunning", Mathf.Abs(mx) > 0.05f);
         anim.SetBool("isGrounded", isGrounded());
+        anim.SetBool("isFalling", body.velocity.y < -0.01f);
     }
 
     private void FixedUpdate()
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 1f, groundLayers);
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.2f, groundLayers);
         return groundCheck != null;
     }
 }

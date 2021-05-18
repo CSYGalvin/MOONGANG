@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jumpForce = 3f;
+        jumpForce = 4f;
         Speed = 3f;
     }
 
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.2f, groundLayers);
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.05f, groundLayers);
         return groundCheck != null;
     }
 }

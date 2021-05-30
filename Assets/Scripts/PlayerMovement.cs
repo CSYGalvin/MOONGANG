@@ -12,13 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
     public Transform feet;
     public LayerMask groundLayers;
+    public SpriteRenderer sprite;
 
     float mx;
     // Start is called before the first frame update
     void Start()
     {
-        jumpForce = 4f;
-        Speed = 3f;
+        jumpForce = 20f;
+        Speed = 10f;
     }
 
     // Update is called once per frame
@@ -31,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (mx >= 0f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+          sprite.flipX = false;
         }
         else
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+          sprite.flipX = true;
         }
 
         anim.SetBool("isRunning", Mathf.Abs(mx) > 0.05f);

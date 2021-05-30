@@ -10,14 +10,18 @@ public class LevelManager : MonoBehaviour
   public Transform respawnPoint;
   public GameObject playerPrefab;
 
-  public CinemachineVirtualCameraBase cam;
+
+  public Camera camera;
+  private SmoothCameraFollow _camScript;
+
 
   private void Awake() {
     instance = this;
+    _camScript = camera.GetComponent<SmoothCameraFollow>();
   }
 
   public void Respawn () {
-    GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
-    cam.Follow = player.transform;
-  }
+    GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);     
+    _camScript.target = player.transform;
+    }
 }

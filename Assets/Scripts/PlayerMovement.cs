@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
-    public float jumpForce = 10f;
+    public float jumpForce;
     public Transform feet;
     public LayerMask groundLayers;
     public SpriteRenderer sprite;
@@ -24,21 +24,27 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        mx = Input.GetAxisRaw("Horizontal");
+    {        
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
             Jump();
         }
-        if (mx >= 0f)
-        {
-          sprite.flipX = false;
+
+        mx = Input.GetAxisRaw("Horizontal");
+        // cannot run while attacking
+        if(anim.GetBool("isAttacking") && isGrounded()){
+            mx = 0;
         }
-        else
-        {
-          sprite.flipX = true;
+        // flip player in the correct direction
+        if (mx == 0f){
+            // player did not move, don't need to flip
+        }else if (mx < 0f){
+            transform.localScale = new Vector3(-5,5,1);
+        }else {
+            transform.localScale = new Vector3(5,5,1);
         }
 
+        // set animations
         anim.SetBool("isRunning", Mathf.Abs(mx) > 0.05f);
         anim.SetBool("isGrounded", isGrounded());
         anim.SetBool("isFalling", body.velocity.y < -0.01f);
@@ -61,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded()
     {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.05f, groundLayers);
+
         return groundCheck != null;
     }
 }

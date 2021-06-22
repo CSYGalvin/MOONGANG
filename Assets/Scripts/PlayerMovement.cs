@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     public float jumpForce;
     public Transform feet;
+    public float groundCheckRange;
     public LayerMask groundLayers;
-    public SpriteRenderer sprite;
 
     float mx;
     // Start is called before the first frame update
     void Start()
     {
+        groundCheckRange = 0.6f;
         jumpForce = 20f;
         Speed = 10f;
     }
@@ -66,8 +67,14 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.05f, groundLayers);
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, groundCheckRange, groundLayers);
 
         return groundCheck != null;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(feet.position, groundCheckRange);
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Animator anim;
-    public float attackDuration;
-    public float attackTimeLeft = 0;
+
+    private float attackDuration;
+    private float attackTimeLeft = 0;
 
     public float hitRange = 1.25F;
     public Transform Attackpoint;
@@ -14,14 +15,12 @@ public class PlayerAttack : MonoBehaviour
 
     public LayerMask enemies;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         hitRange = 1.25F;
         attackDuration = 0.33F;
+        AttackDamage = 60;
     }
 
     // Update is called once per frame
@@ -30,12 +29,12 @@ public class PlayerAttack : MonoBehaviour
         //countdown timer since last attacked
         if(attackTimeLeft > 0) {
             attackTimeLeft = attackTimeLeft - Time.deltaTime;
-        }else{
+        } else {
             anim.SetBool("isAttacking", false);
         }
 
-        if(Input.GetButtonDown("Fire1")){
-            if(attackTimeLeft <= 0) {
+        if (Input.GetButtonDown("Fire1")) {
+            if (attackTimeLeft <= 0) {
                 attackTimeLeft = attackDuration;
                 Attack();
             }
@@ -50,8 +49,7 @@ public class PlayerAttack : MonoBehaviour
         Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(Attackpoint.position, hitRange, enemies);
 
         //deal damage to enemies
-        foreach(Collider2D enemy in enemiesInRange)
-        {
+        foreach(Collider2D enemy in enemiesInRange) {
             enemy.gameObject.SendMessage("TakeDamage", AttackDamage);
         }
     }

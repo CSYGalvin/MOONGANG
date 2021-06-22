@@ -154,9 +154,10 @@ MonoBehaviour:
   anim: {fileID: 6152124730233156952}
   jumpForce: 10
   feet: {fileID: 6152124730448050621}
+  groundCheckRange: 0
   groundLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   sprite: {fileID: 6152124730233156948}
 --- !u!95 &6152124730233156952
 Animator:
@@ -204,6 +205,10 @@ MonoBehaviour:
   anim: {fileID: 6152124730233156952}
   hitRange: 0
   Attackpoint: {fileID: 6286079917900025907}
+  AttackDamage: 60
+  enemies:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &6152124730448050620
 GameObject:
   m_ObjectHideFlags: 0

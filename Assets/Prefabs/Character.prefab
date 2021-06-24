@@ -158,7 +158,6 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
-  sprite: {fileID: 6152124730233156948}
 --- !u!95 &6152124730233156952
 Animator:
   serializedVersion: 3
@@ -190,6 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d916aa97dd94511a7f1c0d31441dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  anim: {fileID: 6152124730233156952}
+  col: {fileID: 6152124730233156947}
 --- !u!114 &4656444131062308237
 MonoBehaviour:
   m_ObjectHideFlags: 0

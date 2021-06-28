@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/XLscene.unity
     guid: cad0461503cbf4470aab296f2095ce81
+  - enabled: 1
+    path: Assets/Scenes/Galvin.unity
+    guid: 1364372077b56b647b6709385fb2fb6e
   m_configObjects: {}

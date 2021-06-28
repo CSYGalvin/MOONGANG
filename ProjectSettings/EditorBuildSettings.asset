@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Galvin.unity
     guid: 1364372077b56b647b6709385fb2fb6e
+
   m_configObjects: {}

@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1832713061758311002, guid: 7b931f505cefd6f46bd14ed3a583b3aa, type: 3}
       propertyPath: AdjTime
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7592326375987626502, guid: 7b931f505cefd6f46bd14ed3a583b3aa, type: 3}
       propertyPath: m_Name

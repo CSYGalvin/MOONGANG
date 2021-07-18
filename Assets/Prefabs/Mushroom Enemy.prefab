@@ -262,6 +262,7 @@ MonoBehaviour:
   health: 100
   anim: {fileID: 7592326375987626501}
   col: {fileID: 7592326375987626506}
+  enemyMovement: {fileID: 1832713061758311002}
 --- !u!114 &8771764088001918456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +280,7 @@ MonoBehaviour:
   player:
     serializedVersion: 2
     m_Bits: 512
+  enemyMovement: {fileID: 1832713061758311002}
 --- !u!114 &1832713061758311002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,3 +296,5 @@ MonoBehaviour:
   AdjTime: 0
   body: {fileID: 7592326375987626505}
   anim: {fileID: 7592326375987626501}
+  isAttacking: 0
+  isDying: 0

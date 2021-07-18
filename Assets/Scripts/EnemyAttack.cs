@@ -9,13 +9,14 @@ public class EnemyAttack : MonoBehaviour
     public Transform Attackpoint;
 
     public LayerMask player;
+
+    public EnemyMovement enemyMovement;
     
     private float hitRange = 0.5F;    
     private int AttackDamage = 30;
 
-    private float attackDuration = 2f;
-    private float attackTimeLeft = 0;
-    private bool damageDealt = false;
+    private bool onCooldown = false;
+
 
     
 
@@ -27,19 +28,7 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //countdown timer since last Attack Animation
-        if(attackTimeLeft > 0) {
-            attackTimeLeft = attackTimeLeft - Time.deltaTime;
-
-            if(!damageDealt && attackTimeLeft < 1.5f){
-                Collider2D playerCol = Physics2D.OverlapCircle(Attackpoint.position, hitRange, player);
-                if (playerCol != null) {
-                    playerCol.gameObject.SendMessage("TakeDamage", AttackDamage);
-                }
-                damageDealt = true;
-                anim.SetBool("isAttacking", false);
-            }
-        } else {
+        if(!onCooldown){
             if (Physics2D.OverlapCircle(Attackpoint.position, hitRange, player) != null) {
                 Attack();
             }
@@ -47,11 +36,32 @@ public class EnemyAttack : MonoBehaviour
     }
 
     private void Attack() {
-        //play attack animation
-        anim.SetBool("isAttacking", true);
-        //start Attack Countdown
-        attackTimeLeft = attackDuration;
-        damageDealt = false;
+        StartCoroutine(AttackAnimCoroutine());
+        StartCoroutine(DealDamageCoroutine());
+        StartCoroutine(StartAttackCoolDown());
+    }
+
+    private IEnumerator AttackAnimCoroutine(){
+        anim.SetTrigger("Attack");
+        enemyMovement.isAttacking= true;
+        yield return new WaitForSeconds(0.67f);        
+        enemyMovement.isAttacking = false;
+    }
+
+    private IEnumerator DealDamageCoroutine(){
+        yield return new WaitForSeconds(0.5f);  
+        if(!enemyMovement.isDying && !enemyMovement.isTakingHit){
+            Collider2D playerCol = Physics2D.OverlapCircle(Attackpoint.position, hitRange, player);
+            if (playerCol != null) {
+                playerCol.gameObject.SendMessage("TakeDamage", AttackDamage);
+            }
+        }
+    }
+
+    private IEnumerator StartAttackCoolDown(){
+        onCooldown = true;
+        yield return new WaitForSeconds(2f); 
+        onCooldown = false;
     }
 
     private void OnDrawGizmosSelected()

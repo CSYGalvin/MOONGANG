@@ -7,6 +7,6 @@ public class Playbtn : MonoBehaviour
 {
     public void loadGame(){
         Debug.Log("clicked");
-        SceneManager.LoadScene("Character Testing Scene");
+        SceneManager.LoadScene("Dungeon");
     }
 }

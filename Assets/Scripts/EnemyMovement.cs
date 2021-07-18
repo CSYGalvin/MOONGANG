@@ -7,6 +7,9 @@ public class EnemyMovement : MonoBehaviour
     public float AdjTime;
     public Rigidbody2D body;
     public Animator anim;
+    public bool isAttacking = false;
+    public bool isDying = false;
+    public bool isTakingHit = false;
 
     private float MovingTime;
     private float Speed = 4f;
@@ -21,6 +24,10 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isAttacking || isDying || isTakingHit){
+            body.velocity = new Vector2(0, body.velocity.y);
+            return;
+        }
         if (AdjTime == 0f) {
             return;
         }
@@ -29,14 +36,10 @@ public class EnemyMovement : MonoBehaviour
             mx = 0;
         }
         
-        if (MovingTime > 0) {
-            if (anim.GetBool("isAttacking")) {
-                body.velocity = new Vector2(0,0);
-            } else {                
-                Vector2 movement = new Vector2(mx * Speed, body.velocity.y);
-                body.velocity = movement;
-                MovingTime -= Time.deltaTime; 
-            }            
+        if (MovingTime > 0) {           
+            Vector2 movement = new Vector2(mx * Speed, body.velocity.y);
+            body.velocity = movement;
+            MovingTime -= Time.deltaTime;                         
         } else {
             MovingTime = AdjTime;
             mx = -mx;
@@ -44,4 +47,5 @@ public class EnemyMovement : MonoBehaviour
         }      
 
     }
+
 }

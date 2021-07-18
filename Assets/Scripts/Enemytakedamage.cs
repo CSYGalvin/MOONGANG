@@ -8,8 +8,7 @@ public class Enemytakedamage : MonoBehaviour
     public Animator anim;
     public Collider2D col;
 
-    private float deathDuration = 0.6f;
-    private float deathTimeLeft = 0;
+    public EnemyMovement enemyMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -20,35 +19,36 @@ public class Enemytakedamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //death countdown has started
-        if (deathTimeLeft > 0) {
-            deathTimeLeft = deathTimeLeft - Time.deltaTime;
-            if (deathTimeLeft < 0.2f) {
-                col.isTrigger = true;
-            }
-        }
-        //death countdown has finished
-        if (deathTimeLeft < 0) {
-            anim.SetBool("isDying", false);
-            Destroy(gameObject);
-        }
     }
 
     void Die() {
         //play death animation and start death countdown
-        anim.SetBool("isDying", true);        
-        deathTimeLeft = deathDuration;
+        StartCoroutine(DeathAnimCoroutine());     
+
     } 
  
+    private IEnumerator DeathAnimCoroutine(){
+        anim.SetTrigger("Death");
+        enemyMovement.isDying = true;
+        yield return new WaitForSeconds(0.5f);   
+        Destroy(gameObject);
+    }
+
     void TakeDamage(int damageAmount)
     {
         health = health - damageAmount;
-        anim.SetTrigger("TakeHit");
+        StartCoroutine(TakeHitAnimCoroutine());
 
         // We should also check if the health is still greater than 0 
         // in order to determine whether enemy is still alive or not
         if (health < 0) {
             Die();
         }
+    }
+    private IEnumerator TakeHitAnimCoroutine(){
+        anim.SetTrigger("TakeHit");
+        enemyMovement.isTakingHit = true;
+        yield return new WaitForSeconds(0.4f);   
+        enemyMovement.isTakingHit = false;
     }
 }

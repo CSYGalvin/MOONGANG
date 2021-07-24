@@ -29,6 +29,19 @@ public class Platform : MonoBehaviour
         }
         transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player")) {
+            collider.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player")) {
+            collider.transform.SetParent(null);
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(pos1.position, pos2.position);

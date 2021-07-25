@@ -24,9 +24,12 @@ public class PlayerTeleport : MonoBehaviour
             }else{
                 gameObject.transform.position = teleportBall.transform.position; 
                 Destroy(teleportBall);
-            }
-
-            
+            }            
         } 
+        if(Input.GetButtonDown("CancelTeleport")){
+            if(teleportBall != null){
+                Destroy(teleportBall);
+            }
+        }
     }
 }

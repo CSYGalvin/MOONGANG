@@ -23,7 +23,7 @@ public class SceneLoader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
       GameObject collisionGameObject = collision.gameObject;
-      if (collisionGameObject.name == "Character")
+      if (collisionGameObject.CompareTag("Player"))
       {
         LoadScene();
       }

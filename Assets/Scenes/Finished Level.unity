@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234899828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7685738, y: 10.466936, z: 469.49277}
+  m_LocalPosition: {x: -8.117545, y: 10.481886, z: 469.49277}
   m_LocalScale: {x: 15, y: 15, z: 12}
   m_Children: []
   m_Father: {fileID: 834427792}
@@ -13169,9 +13169,10 @@ GameObject:
   - component: {fileID: 892165474}
   - component: {fileID: 892165476}
   - component: {fileID: 892165475}
+  - component: {fileID: 892165477}
   m_Layer: 8
   m_Name: Spikes
-  m_TagString: Enemy
+  m_TagString: InstantDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14702,6 +14703,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &892165477
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892165473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &906753675
 GameObject:
   m_ObjectHideFlags: 0
@@ -96311,6 +96328,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1162276831513414554, guid: b5d37119858c744e3958a022b78b4535, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522124335893903778, guid: b5d37119858c744e3958a022b78b4535, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522124335893903778, guid: b5d37119858c744e3958a022b78b4535, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6152124730233156946, guid: b5d37119858c744e3958a022b78b4535, type: 3}
       propertyPath: m_Name
       value: Character
@@ -96680,7 +96709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505500524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.847027, y: 7.8863134, z: 0}
+  m_LocalPosition: {x: -11.43, y: 8.32, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 834427792}

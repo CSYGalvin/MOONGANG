@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     
     public Transform feet;
 
+    public AudioSource jumpSound;
+
     private float jumpForce = 20f;
     private float groundCheckRange = 0.6f;
     private float Speed = 10f;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
             Jump();
+            playJump();
         }
 
         mx = Input.GetAxisRaw("Horizontal");
@@ -82,5 +85,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(feet.position, groundCheckRange);
+    }
+
+    private void playJump()
+    {
+        jumpSound.Play();
     }
 }

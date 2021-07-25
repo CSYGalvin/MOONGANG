@@ -7,7 +7,7 @@ public class PlayerBlockerWall : MonoBehaviour
     void Start(){}
     void OnCollisionEnter2D(Collision2D collider) 
     {
-        if(collider.gameObject.CompareTag("Platform")){
+        if(collider.gameObject.CompareTag("Ball")){
             Physics2D.IgnoreCollision( collider.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }

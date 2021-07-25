@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,9 +47,11 @@ public class PlayerMovement : MonoBehaviour
         if (mx == 0f){
             // player did not move, don't need to flip
         }else if (mx < 0f){
-            transform.localScale = new Vector3(-5,5,1);
+            Vector3 direction = new Vector3(-1 * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = direction;
         }else {
-            transform.localScale = new Vector3(5,5,1);
+            Vector3 direction = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = direction;
         }
 
         // set animations

@@ -59,7 +59,9 @@ public class Playertakedamage : MonoBehaviour
   }
 
   private void OnCollisionEnter2D(Collision2D collision) {
-    if (collision.gameObject.CompareTag("Enemy")) {
+    if (collision.gameObject.CompareTag("InstantDeath")){
+      TakeDamage(1000);
+    } else if (collision.gameObject.CompareTag("Enemy")) {
       // LevelManager.instance.Respawn();
       // Destroy(gameObject);
       TakeDamage(50);

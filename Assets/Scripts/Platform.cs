@@ -31,16 +31,16 @@ public class Platform : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.CompareTag("Player")) {
+        // if (collider.gameObject.CompareTag("Player")) {
             collider.transform.SetParent(transform);
-        }
+        // }
     }
 
     void OnCollisionExit2D(Collision2D collider)
     {
-        if (collider.gameObject.CompareTag("Player")) {
+        // if (collider.gameObject.CompareTag("Player")) {
             collider.transform.SetParent(null);
-        }
+        // }
     }
     private void OnDrawGizmos()
     {

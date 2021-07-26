@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
   public static LevelManager instance;
 
   public Transform respawnPoint;
-  public GameObject playerPrefab;
+  public GameObject player;
 
 
   public Camera camera;
@@ -21,7 +21,9 @@ public class LevelManager : MonoBehaviour
   }
 
   public void Respawn () {
-    GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);     
-    _camScript.target = player.transform;
-    }
+    // GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);     
+    // _camScript.target = player.transform;
+    player.SetActive(true);
+    player.transform.position = respawnPoint.position;
+  }
 }

@@ -45,7 +45,7 @@ public class Playertakedamage : MonoBehaviour
     // Death countdown has finished
     if (deathTimeLeft < 0) {
         anim.SetBool("isDying", false);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         LevelManager.instance.Respawn();
     }
   }

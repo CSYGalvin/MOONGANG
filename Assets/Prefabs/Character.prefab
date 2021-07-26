@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9960785, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.59607846}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -477,6 +477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportBallPrefab: {fileID: 7405924333246815769, guid: cb63d5741f6e00942ae254e784528e42, type: 3}
+  anim: {fileID: 6152124730233156952}
+  y_speed: 10
+  x_speed: 10
 --- !u!82 &1086812111478141577
 AudioSource:
   m_ObjectHideFlags: 0

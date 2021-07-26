@@ -13206,7 +13206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 1505500525}
-  player: {fileID: 1248844261}
+  playerPrefab: {fileID: 6152124730233156946, guid: b5d37119858c744e3958a022b78b4535, type: 3}
   camera: {fileID: 234899829}
 --- !u!4 &834427792
 Transform:
@@ -97337,7 +97337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1717468021
 MonoBehaviour:
   m_ObjectHideFlags: 0
